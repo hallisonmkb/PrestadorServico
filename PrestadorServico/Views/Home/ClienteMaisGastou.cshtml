@@ -1,0 +1,66 @@
+﻿@model IEnumerable<PrestadorServico.Models.ClienteMaisGastouModels>
+@using System.Globalization;
+
+<br />
+
+<div class="container">
+    <div class="form-area">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">Top 3 clientes que mais gastaram em serviços por mês esse ano</div>
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mes)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Valor)
+                    </th>
+                </tr>
+
+                @for (int i = 1; i <= DateTime.Today.Month; i++)
+                {
+                    var clienteMaisGostouList = Model.Where(t => t.Mes == i).Select(t => t);
+
+                    if (clienteMaisGostouList.Count() > 0)
+                    {
+                        foreach (var item in clienteMaisGostouList)
+                        {
+                            <tr>
+                                <td>
+                                    @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(item.Mes).ToUpper()
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Valor)
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>
+                                @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).ToUpper()
+                            </td>
+                            <td>
+                                SEM CLIENTES
+                            </td>
+                            <td></td>
+                        </tr>
+                    }
+
+                }
+            </table>
+
+            </div>
+    </div>
+</div>
+

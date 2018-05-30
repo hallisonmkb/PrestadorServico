@@ -1,0 +1,44 @@
+﻿@model IEnumerable<PrestadorServico.Models.FornecedorMediaValorModels>
+
+<br />
+
+<div class="container">
+    <div class="form-area">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">Média de valor cobrado por fornecedor e tipo de serviço</div>
+            </div>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tipo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ValorMedia)
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tipo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ValorMedia)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+

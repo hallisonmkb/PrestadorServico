@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PrestadorServico.Models.ServicoModels>
+
+<div id="divList">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.ClienteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.Bairro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.Cidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Atendimento)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Bairro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Cidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Atendimento)
+            </td>
+        </tr>
+        }
+
+    </table>
+</div>
+

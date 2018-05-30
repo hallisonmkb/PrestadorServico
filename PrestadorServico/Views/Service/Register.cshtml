@@ -1,0 +1,69 @@
+﻿@model PrestadorServico.Models.ServicoModels
+@using PrestadorServico.Models;
+
+@{
+    ViewBag.Title = "Registro de Serviços Prestados";
+
+    List<SelectListItem> clientes = ViewData["Clientes"] as List<SelectListItem>;
+}
+
+@using (Html.BeginForm("Create", "Service", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken();
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <br />
+
+    <div class="container">
+        <div class="form-area">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">Registro de Serviços Prestados</div>
+                </div>
+
+                <div style="padding-top:30px" class="panel-body">
+                    <div style="display:none" id="result" class="alert alert-danger col-sm-12">
+
+                    </div>
+                    @Html.LabelFor(model => model.ClienteId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div style="margin-bottom: 25px" class="input-group">
+                        @Html.DropDownListFor(model => model.ClienteId, new SelectList(clientes, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Cliente" })
+                        @Html.ValidationMessageFor(model => model.ClienteId, "", new { @class = "text-danger" })
+                    </div>
+
+                    @Html.LabelFor(model => model.Atendimento, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div style="margin-bottom: 25px" class="input-group">
+                        @Html.TextBoxFor(model => model.Atendimento, "{0:dd/MM/yyyy}", htmlAttributes: new { @class = "form-control", id = "Atendimento" })
+                        @Html.ValidationMessageFor(model => model.Atendimento, "", new { @class = "text-danger" })
+                    </div>
+
+                    @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div style="margin-bottom: 25px" class="input-group">
+                        @Html.TextBoxFor(model => model.Descricao, htmlAttributes: new { @class = "form-control", id = "Descricao" })
+                        @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+                    </div>
+
+                    @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div style="margin-bottom: 25px" class="input-group">
+                        @Html.EnumDropDownListFor(model => model.Tipo, htmlAttributes: new { @class = "form-control", id = "Tipo" })
+                        @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
+                    </div>
+
+                    @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div style="margin-bottom: 25px" class="input-group">
+                        @Html.TextBoxFor(model => model.Valor, htmlAttributes: new { @class = "form-control", id = "Valor" })
+                        @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div style="margin-top:10px" class="form-group">
+
+                        <div class="col-sm-12 controls">
+                            <input type="submit" value="Registrar" class="btn primary btn-lg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

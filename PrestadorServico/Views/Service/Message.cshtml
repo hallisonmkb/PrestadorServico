@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Prestador de Serviço";
+}
+
+<br />
+
+@if (ViewBag.Message == "Seu serviço foi registrado.")
+{
+    <div class="alert alert-success">
+        <strong>Sucesso!</strong> @ViewBag.Message
+    </div>
+}
+else
+{
+    <div class="alert alert-danger">
+        <strong>Erro!</strong> @ViewBag.Message
+    </div>
+}

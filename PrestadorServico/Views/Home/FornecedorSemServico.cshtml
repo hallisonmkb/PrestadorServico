@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PrestadorServico.Models.FornecedorSemServicoModels>
+@using System.Globalization;
+
+<br />
+
+<div class="container">
+    <div class="form-area">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">Fornecedores sem prestar atendimento por mês esse ano</div>
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mes)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                </tr>
+
+                @{
+                    var fornecedorList = (IEnumerable<PrestadorServico.Models.FornecedorModels>)ViewData["Fornecedor"];
+
+                    for (int i = 1; i <= DateTime.Today.Month; i++)
+                    {
+                        var fornecedorSemServicoList = fornecedorList.Where(x => !Model.Where(y => y.Mes.Equals(i)).Select(z => z.FornecedorId).ToList().Contains(x.FornecedorId));
+
+                        if (fornecedorSemServicoList.Count() > 0)
+                        {
+                            foreach (var item in fornecedorSemServicoList)
+                            {
+                                <tr>
+                                    <td>
+                                        @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).ToUpper()
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nome)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>
+                                    @CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).ToUpper()
+                                </td>
+                                <td>
+                                    NENHUM FORNECEDOR SEM SERVIÇO
+                                </td>
+                                <td></td>
+                            </tr>
+                        }
+
+                    }
+                }
+            </table>
+
+            </div>
+    </div>
+</div>
+
