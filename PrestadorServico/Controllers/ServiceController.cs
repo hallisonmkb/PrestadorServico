@@ -17,7 +17,7 @@ namespace PrestadorServico.Controllers
             }
 
             var clienteRepo = new ClienteRepository();
-            var clienteList = clienteRepo.Get();
+            var clienteList = clienteRepo.GetAll();
 
             var clientes = clienteList.Select(c => new SelectListItem
             {

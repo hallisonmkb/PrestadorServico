@@ -9,4 +9,11 @@ namespace PrestadorServico.Repositories
         void Add(TEnt entity);
         void Remove(TEnt entity);
     }
+
+    public interface IGenericRepository<TEnt> where TEnt : class
+    {
+        IEnumerable<TEnt> GetAll();
+        void Add(TEnt entity);
+        void Remove(TEnt entity);
+    }
 }

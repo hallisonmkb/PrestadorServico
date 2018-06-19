@@ -188,6 +188,7 @@
     <Compile Include="Repositories\FornecedorMediaValorRepository.cs" />
     <Compile Include="Repositories\FornecedorRepository.cs" />
     <Compile Include="Repositories\FornecedorSemServicoRepository.cs" />
+    <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\ServicoRepository.cs" />
     <Compile Include="Controllers\ReportController.cs" />

@@ -16,7 +16,7 @@ namespace PrestadorServico.Controllers
             }
 
             var clienteRepo = new ClienteRepository();
-            var clienteList = clienteRepo.Get();
+            var clienteList = clienteRepo.GetAll();
 
             ViewData["Clientes"] = clienteList.Select(c => new SelectListItem
             {
